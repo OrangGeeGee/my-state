@@ -13,19 +13,31 @@
         .container {
             padding: 40px 15px;
         }
-        .form-control {
-
+        .current {
+            margin-bottom: 2em;
+        }
+        #state {
+            outline: none;
+            border: 0;
+        }
+        #ok {
+            color: #AAA;
+             cursor: pointer;
+        }
+        #state, #ok {
+            display: inline-block;
+            font-size: 24px;
+            line-height: 1.4;
+            padding: .2em 0;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="input-group">
-        <input id="state" class="form-control input-lg" type="text" name="state" placeholder="Right now..." autofocus />
-        <div class="input-group-btn">
-            <button id="ok" type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-ok"></span></button>
-        </div>
+    <div class="current">
+        <input id="state" type="text" name="state" placeholder="Right now..." autofocus />
+        <span class="hidden" id="ok">enter</span>
     </div>
 
     <div id="states">
@@ -48,8 +60,8 @@
         function addStateToDOM(state) {
             var e = document.getElementById('states');
             var time = new Date(state.time);
-            e.innerHTML = '<h3>' + state.state + '</h3>' +
-                    '<p>' + time.toLocaleDateString() + ' ' + time.toLocaleTimeString() + '</p>' +
+            var timeStr = time.toLocaleDateString() + ' ' + time.toLocaleTimeString();
+            e.innerHTML = '<h3 title="timeStr">' + state.state + '</h3>' +
                     e.innerHTML;
         }
 
